@@ -32,5 +32,10 @@ class PlayerSprite < Joybox::Physics::PhysicsSprite
       self.body.apply_force force:[10, 40]
     end
   end
+  
+  def die
+    @alive = false
+    self.run_action Blink.with times:50
+  end
 
 end

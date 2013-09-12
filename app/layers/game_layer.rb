@@ -12,6 +12,7 @@ class GameLayer < Joybox::Core::Layer
     create_fixtures
     load_player
     configure_controls
+    detect_collisions
     game_loop
   end
   
@@ -118,6 +119,12 @@ class GameLayer < Joybox::Core::Layer
 
     viewPoint = Screen.center - [x, y].to_point
     @tile_map.position = viewPoint
+  end
+  
+  def detect_collisions
+    @world.when_collide @player do |collision_sprite, is_touching|
+      @player.die if @hazard_tiles.include?(collision_sprite)
+    end
   end
 
 end
