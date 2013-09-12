@@ -14,9 +14,14 @@ class AppDelegate
     @window.makeKeyAndVisible
     
     # push the game scene onto the director
-    @director << GameLayer.scene
+    @game_scene = GameLayer.scene
+    @director << @game_scene
     
     true
+  end
+  
+  def player
+    @game_scene.children.getNSArray[0].player
   end
 
   def applicationWillResignActive(app)
