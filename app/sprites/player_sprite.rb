@@ -14,6 +14,23 @@ class PlayerSprite < Joybox::Physics::PhysicsSprite
       )
     end
     super file_name: 'koalio_stand.png', body: @player_body
+    @alive = true
+  end
+  
+  def alive?
+    @alive
+  end
+  
+  def move_forward
+    if alive?
+      self.body.apply_force force:[5, 0], as_impulse: true
+    end
+  end
+  
+  def jump
+    if alive?
+      self.body.apply_force force:[10, 40]
+    end
   end
 
 end
