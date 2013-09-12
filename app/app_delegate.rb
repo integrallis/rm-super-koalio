@@ -3,8 +3,8 @@ class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
     @director = Joybox::Configuration.setup do
-      director display_stats: false
-      debug physics: [:aabb]    
+      director display_stats: true
+      #debug physics: [:aabb]    
     end
 
     @navigation_controller = UINavigationController.alloc.initWithRootViewController(@director)

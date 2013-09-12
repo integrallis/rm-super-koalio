@@ -18,13 +18,12 @@ class GameLayer < Joybox::Core::Layer
   
   def load_tile_map
     @tile_map = TileMap.new file_name: 'tilemap.tmx'
-    #self << @tile_map
-    #self.add_child @tile_map, -1
+    self << @tile_map
   end
   
   def load_background
     @blue_sky = LayerColor.new color: "#6365fc".to_color
-    #self << @blue_sky
+    self << @blue_sky
   end
   
   def initialize_world
@@ -33,8 +32,7 @@ class GameLayer < Joybox::Core::Layer
   
   def load_player
     @player = PlayerSprite.new(@world)
-    #@tile_map.add_child @player, 15
-    self.add_child @player, 15
+    @tile_map.add_child @player, 15
   end
   
   def game_loop
