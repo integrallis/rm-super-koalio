@@ -41,6 +41,7 @@ class GameLayer < Joybox::Core::Layer
       if @player.alive?
         @world.step delta: delta
         @player.move_forward if @moving 
+        set_viewpoint_center(@player.position)
       end
     end
   end
@@ -107,6 +108,16 @@ class GameLayer < Joybox::Core::Layer
         @moving = false
       end
     end
+  end
+  
+  def set_viewpoint_center(position)
+    x = [position.x, Screen.width / 2].max
+    y = [position.y, Screen.height / 2].max
+    x = [x, (@tile_map.mapSize.width * @tile_map.tileSize.width) - Screen.half_width].min
+    y = [y, (@tile_map.mapSize.height * @tile_map.tileSize.height) - Screen.half_height].min
+
+    viewPoint = Screen.center - [x, y].to_point
+    @tile_map.position = viewPoint
   end
 
 end
