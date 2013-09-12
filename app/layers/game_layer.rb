@@ -13,6 +13,7 @@ class GameLayer < Joybox::Core::Layer
     load_player
     configure_controls
     detect_collisions
+    set_background_music
     game_loop
   end
   
@@ -125,6 +126,10 @@ class GameLayer < Joybox::Core::Layer
     @world.when_collide @player do |collision_sprite, is_touching|
       @player.die if @hazard_tiles.include?(collision_sprite)
     end
+  end
+  
+  def set_background_music
+    SimpleAudioEngine.sharedEngine.playBackgroundMusic "background.mp3"
   end
 
 end

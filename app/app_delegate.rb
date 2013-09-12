@@ -14,6 +14,11 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
     
+    # preload sounds effects
+    SimpleAudioEngine.sharedEngine.preloadEffect('background.mp3')
+    SimpleAudioEngine.sharedEngine.preloadEffect('jump.wav')
+    SimpleAudioEngine.sharedEngine.preloadEffect('hurt.wav')
+    
     # push the game scene onto the director
     @game_scene = GameLayer.scene
     @director << @game_scene
