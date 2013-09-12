@@ -10,6 +10,7 @@ class GameLayer < Joybox::Core::Layer
     load_background
     load_tile_map
     load_player
+    game_loop
   end
   
   private 
@@ -31,6 +32,12 @@ class GameLayer < Joybox::Core::Layer
   def load_player
     @player = PlayerSprite.new(@world)
     @tile_map.add_child @player, 15
+  end
+  
+  def game_loop
+    schedule_update do |delta|
+      @world.step delta: delta
+    end
   end
 
 end
