@@ -8,7 +8,7 @@ class PlayerSprite < Joybox::Physics::PhysicsSprite
       fixed_rotation: true
     ) do
       polygon_fixture(
-        box: [18, 26],
+        box: [18 / 4, 60 / 4],
         friction: 0.7,
         density: 1.0
       )
