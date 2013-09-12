@@ -12,6 +12,10 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
+    
+    # push the game scene onto the director
+    @director << GameLayer.scene
+    
     true
   end
 
