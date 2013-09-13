@@ -40,10 +40,12 @@ class GameLayer < Joybox::Core::Layer
   
   def game_loop
     schedule_update do |delta|
-      if @player.alive?
+      if @player.alive? 
         @world.step delta: delta
         @player.move_forward if @moving 
         set_viewpoint_center(@player.position)
+      else
+        game_over
       end
     end
   end
@@ -130,6 +132,10 @@ class GameLayer < Joybox::Core::Layer
   
   def set_background_music
     SimpleAudioEngine.sharedEngine.playBackgroundMusic "background.mp3"
+  end
+  
+  def game_over
+    Joybox.director.stop_animation
   end
 
 end

@@ -17,8 +17,8 @@ class PlayerSprite < Joybox::Physics::PhysicsSprite
     @alive = true
   end
   
-  def alive?
-    @alive
+  def alive?     
+    @alive && above_ground?
   end
   
   def move_forward
@@ -39,6 +39,10 @@ class PlayerSprite < Joybox::Physics::PhysicsSprite
     self.run_action Blink.with times:50
     SimpleAudioEngine.sharedEngine.playEffect 'hurt.wav'
     SimpleAudioEngine.sharedEngine.pauseBackgroundMusic
+  end
+  
+  def above_ground?
+    @player_body.position.y > 0
   end
 
 end
