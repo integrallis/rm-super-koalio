@@ -136,6 +136,7 @@ class GameLayer < Joybox::Core::Layer
   
   def game_over
     Joybox.director.stop_animation
+    Joybox.director.replace_scene GameOverLayer.scene
   end
 
 end
